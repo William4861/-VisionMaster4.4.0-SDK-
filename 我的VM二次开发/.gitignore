@@ -1,0 +1,21 @@
+# 忽略 Visual Studio 的缓存和编译文件夹
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.db
+
+# 忽略所有的 DLL 和 EXE 程序
+*.dll
+*.exe
+*.pdb
+
+# 忽略临时文件
+*.tmp
+*.log
+
+# 忽略原图和数据集（如果你文件夹里有几十兆的照片，别传）
+*.jpg
+*.png
+*.bmp

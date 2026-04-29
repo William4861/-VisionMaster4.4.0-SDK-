@@ -1,0 +1,63 @@
+﻿<Window x:Class="我的VM二次开发.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:我的VM二次开发"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        mc:Ignorable="d"
+        Title="王远的VM二次开发" Height="650" Width="1000">
+    <Grid Background="#333">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="160"/>
+        </Grid.RowDefinitions>
+        <!--显示区域-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <GroupBox Header="下位机通信设置 (PLC/机械臂)" Margin="0,20,0,20" Padding="10" Background="Gray" Foreground="White">
+                    <StackPanel>
+                        <TextBlock Text="串口号 (例如 COM2):" Margin="0,5"/>
+                        <TextBox x:Name="txtComPort" Text="COM2" Height="25" VerticalContentAlignment="Center"/>
+                        <Button x:Name="btnOpenSerial" Content="打开串口" Height="35" Margin="0,15,0,0" Click="btnOpenSerial_Click"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Grid.Row="1" Header="VM操作" Margin="0,0,0,20" Padding="10" Background="Gray" Foreground="White">
+                    <StackPanel Margin="5">
+                        <TextBox x:Name="soluPathText" Text="D:\Bottle.sol" Foreground="Black" Margin="5" BorderThickness="3" BorderBrush="White"/>
+                        <Button x:Name="btnLoad" Height="30" Content="加载方案"  Margin="5" Click="BtnLoad_Click"/>
+                        <Button x:Name="btnRunOnce" Height="30" Content="单次执行"  Margin="5" Click="BtnRunOnce_Click"/>
+                        <Button x:Name="btnRunAuto" Height="30" Content="自动执行"  Margin="5" Click="btnRunAuto_Click"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+            <GroupBox Grid.Column="1" Header="原图" Foreground="White">
+                <wfi:WindowsFormsHost x:Name="leftHost"/>
+            </GroupBox>
+            <GroupBox Grid.Column="2" Header="结果图" Foreground="White">
+                <wfi:WindowsFormsHost x:Name="rightHost"/>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--OK/NG信号显示-->
+            <Border x:Name="statusBorder" Grid.Column="0" CornerRadius="20" Background="Gray" Margin="0,5,5,0">
+                <TextBlock x:Name="statusText" Text="等待检测..." VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="45" FontWeight="Bold" Foreground="White"/>
+            </Border>
+            <!--日志显示-->
+            <TextBox x:Name="logText" VerticalScrollBarVisibility="Auto" Grid.Column="1" Margin="5" IsReadOnly="True" Background="Black" Foreground="Lime"/>
+        </Grid>
+    </Grid>
+</Window>

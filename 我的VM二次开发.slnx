@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="我的VM二次开发/我的VM二次开发.csproj" Id="10e6fe8c-2d46-4691-9808-0d05b156121b">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+</Solution>
